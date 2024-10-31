@@ -211,5 +211,41 @@
           "meshname": "thumb_fingertip"
         }
       ]
-    }
+    },
+    "finger_actuators":[
+      {
+      "name":0,
+      "joint":0
+      },
+      {
+        "name":1,
+        "joint":1
+      },
+      {
+        "name":2,
+        "joint":2
+      },
+      {
+        "name":3,
+        "joint":3
+      }
+    ],
+    "thumb_actuators":[
+      {
+      "name":0,
+      "joint":0
+      },
+      {
+        "name":1,
+        "joint":1
+      },
+      {
+        "name":2,
+        "joint":2
+      },
+      {
+        "name":3,
+        "joint":3
+      }
+    ]
   }
