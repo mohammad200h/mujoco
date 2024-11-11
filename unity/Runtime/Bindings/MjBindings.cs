@@ -109,7 +109,7 @@ public const int mjMAXLINEPNT = 1000;
 public const int mjMAXPLANEGRID = 200;
 public const bool THIRD_PARTY_MUJOCO_MJXMACRO_H_ = true;
 public const bool THIRD_PARTY_MUJOCO_MUJOCO_H_ = true;
-public const int mjVERSION_HEADER = 325;
+public const int mjVERSION_HEADER = 326;
 
 
 // ------------------------------------Enums------------------------------------
@@ -4851,7 +4851,7 @@ public unsafe struct mjData_ {
   public int nf;
   public int nl;
   public int nefc;
-  public int nnzJ;
+  public int nJ;
   public int nisland;
   public double time;
   public fixed double energy[2];
@@ -5428,7 +5428,7 @@ public unsafe struct mjModel_ {
   public int* flex_shell;
   public int* flex_evpair;
   public double* flex_vert;
-  public double* flex_xvert0;
+  public double* flex_vert0;
   public double* flexedge_length0;
   public double* flexedge_invweight0;
   public double* flex_radius;
