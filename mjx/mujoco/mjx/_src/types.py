@@ -536,6 +536,7 @@ class Model(PyTreeNode):
     nM: number of non-zeros in sparse inertia matrix
     nD: number of non-zeros in sparse dof-dof matrix
     nB: number of non-zeros in sparse body-dof matrix
+    nJmom: number of non-zeros in sparse actuator_moment matrix
     ntree: number of kinematic trees under world body
     ngravcomp: number of bodies with nonzero gravcomp
     nuserdata: size of userdata array
@@ -855,6 +856,7 @@ class Model(PyTreeNode):
   nM: int  # pylint:disable=invalid-name
   nD: int  # pylint:disable=invalid-name
   nB: int  # pylint:disable=invalid-name
+  nJmom: int
   ntree: int = _restricted_to('mujoco')
   ngravcomp: int
   nuserdata: int
@@ -946,7 +948,7 @@ class Model(PyTreeNode):
   geom_margin: jax.Array
   geom_gap: jax.Array
   geom_fluid: np.ndarray
-  geom_rgba: np.ndarray
+  geom_rgba: jax.Array
   site_type: np.ndarray
   site_bodyid: np.ndarray
   site_sameframe: np.ndarray
@@ -1040,7 +1042,7 @@ class Model(PyTreeNode):
   tex_nchannel: np.ndarray
   tex_adr: np.ndarray
   tex_data: jax.Array
-  mat_rgba: np.ndarray
+  mat_rgba: jax.Array
   mat_texid: np.ndarray
   pair_dim: np.ndarray
   pair_geom1: np.ndarray
@@ -1236,8 +1238,8 @@ class Data(PyTreeNode):
     actuator_length: actuator lengths                           (nu,)
     moment_rownnz: number of non-zeros in actuator_moment row   (nu,)
     moment_rowadr: row start address in colind array            (nu,)
-    moment_colind: column indices in sparse Jacobian            (nu, nv)
-    actuator_moment: actuator moments                           (nu, nv)
+    moment_colind: column indices in sparse Jacobian            (nJmom,)
+    actuator_moment: actuator moments                           (nJmom,)
     crb: com-based composite inertia and mass                   (nbody, 10)
     qM: total inertia                                if sparse: (nM,)
                                                      if dense:  (nv, nv)
